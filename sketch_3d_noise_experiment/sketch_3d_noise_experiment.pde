@@ -1,15 +1,17 @@
 float zoff;
+float xoff;
 
 void setup() {
  size(640,360);
  zoff = 0.0;
+ xoff = 0.0;
 }
 
 void draw() {
   
   loadPixels();
   
-  float xoff = 0.0;
+  //float xoff = 0.0;
   
   for (int x = 0; x < width; x++) {
     
@@ -21,9 +23,9 @@ void draw() {
       float blue = map(noise(yoff),0,1,0,255);
       float green = map(noise(zoff),0,1,0,255);
       
-      float bright = map(noise(xoff,yoff,zoff),0,1,0,255); // Perlin noise brightness
+      float bright = map(noise(xoff,yoff,zoff),0,1,0,255);
       
-      pixels[x+y*width] = color(red,green,blue); // what is multiplying by width doing here?
+      pixels[x+y*width] = color(red,green,blue,bright);
       
       yoff += 0.1;
     }
