@@ -2,9 +2,11 @@ float zoff;
 float xoff;
 
 void setup() {
- size(640,360);
- zoff = 0.0;
- xoff = 0.0;
+  frameRate(120);
+  size(640,360);
+  //fullScreen();
+  zoff = 0.0;
+  xoff = 0.0;
 }
 
 void draw() {
@@ -25,15 +27,15 @@ void draw() {
       
       float bright = map(noise(xoff,yoff,zoff),0,1,0,255);
       
-      pixels[x+y*width] = color(red,green,blue,bright);
+      pixels[x+y*width] = color(blue,red,bright,green);
       
-      yoff += 0.1;
+      yoff += 0.01; 
     }
-    xoff += 0.1;
+    xoff += 0.01;
   }
   
   updatePixels();
   
-  zoff += 0.01;
+  zoff += 0.1;
   
 }
